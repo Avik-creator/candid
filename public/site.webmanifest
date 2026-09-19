@@ -1,0 +1,16 @@
+{
+  "name": "Candid — Anonymous messages, honestly",
+  "short_name": "Candid",
+  "description": "Share your link, collect honest anonymous messages, and answer the ones you love.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
