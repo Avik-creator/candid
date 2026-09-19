@@ -2,9 +2,19 @@ import "server-only"
 
 import { and, desc, eq, ne, sql } from "drizzle-orm"
 
-import { db } from "@/lib/db"
+import { db, pool } from "@/lib/db"
 import { messages, profiles } from "@/lib/db/schema"
 import type { Message, Profile } from "@/lib/types"
+
+export async function getUserAccountByUserId(
+  userId: string
+): Promise<{ email: string; name: string | null } | null> {
+  const res = await pool.query<{ email: string; name: string | null }>(
+    "SELECT email, name FROM neon_auth.user WHERE id = $1 LIMIT 1",
+    [userId]
+  )
+  return res.rows[0] ?? null
+}
 
 export async function getProfileByUsername(username: string): Promise<Profile | null> {
   const [profile] = await db

@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache"
 
 import { getCurrentUser } from "@/lib/auth"
 import { isDbConfigured } from "@/lib/config"
+import { sendNewMessageEmail } from "@/lib/email"
 import * as q from "@/lib/queries"
 
 type Result = { ok: boolean; error?: string }
@@ -47,6 +48,20 @@ export async function sendMessage(
   await q.insertMessage(profile.user_id, text)
   revalidatePath(`/u/${username}`)
   revalidatePath("/dashboard")
+
+  // Asynchronously dispatch notification email to inbox owner
+  q.getUserAccountByUserId(profile.user_id)
+    .then((account) => {
+      if (account?.email) {
+        sendNewMessageEmail({
+          to: account.email,
+          recipientName: profile.display_name || account.name || `@${username}`,
+          messageBody: text,
+        }).catch((err) => console.error("[Email] Background send error:", err))
+      }
+    })
+    .catch((err) => console.error("[Email] User lookup error:", err))
+
   return { ok: true }
 }
 
