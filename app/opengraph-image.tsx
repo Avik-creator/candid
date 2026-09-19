@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og"
+import { APP_DOMAIN } from "@/lib/config"
 
 export const alt = "Candid — Anonymous messages, honestly"
 export const size = {
@@ -126,7 +127,7 @@ export default function Image() {
             <span style={{ display: "flex" }}>• No Account Needed</span>
             <span style={{ display: "flex" }}>• Spam Protected</span>
           </div>
-          <div style={{ display: "flex", color: "#e4e4e7" }}>candid.avikmukherjee.com</div>
+          <div style={{ display: "flex", color: "#e4e4e7" }}>{APP_DOMAIN}</div>
         </div>
       </div>
     ),

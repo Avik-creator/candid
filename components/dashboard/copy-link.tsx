@@ -5,13 +5,13 @@ import { Check, Copy, ExternalLink, Share2 } from "lucide-react"
 import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
+import { APP_DOMAIN } from "@/lib/config"
 
 export function CopyLink({ username }: { username: string }) {
   const [copied, setCopied] = React.useState(false)
 
-  const displayDomain = process.env.NEXT_PUBLIC_APP_DOMAIN ?? "candid.avikmukherjee.com"
   const path = `/u/${username}`
-  const display = `${displayDomain}${path}`
+  const display = `${APP_DOMAIN}${path}`
 
   async function copy() {
     const url = `${window.location.origin}${path}`

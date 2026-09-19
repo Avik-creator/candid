@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next"
+import { APP_URL } from "@/lib/config"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://candid.avikmukherjee.com"
+  const baseUrl = APP_URL
   const now = new Date()
 
   return [

@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og"
 import { getProfileByUsername } from "@/lib/queries"
+import { APP_DOMAIN } from "@/lib/config"
 
 export const alt = "Send an anonymous message on Candid"
 export const size = {
@@ -149,7 +150,7 @@ export default async function Image({ params }: Props) {
           }}
         >
           <div style={{ display: "flex" }}>Drop an anonymous note • No login required</div>
-          <div style={{ display: "flex", color: "#e4e4e7" }}>candid.avikmukherjee.com/u/{username}</div>
+          <div style={{ display: "flex", color: "#e4e4e7" }}>{APP_DOMAIN}/u/{username}</div>
         </div>
       </div>
     ),

@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
+import { APP_DOMAIN } from "@/lib/config"
 
 export function ProfileForm({
   initial,
@@ -52,7 +53,7 @@ export function ProfileForm({
       <div className="flex flex-col gap-2">
         <Label htmlFor="username">Username</Label>
         <div className="flex items-center rounded-lg border border-input bg-background pl-3.5 focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/40">
-          <span className="text-sm text-muted-foreground">candid.avikmukherjee.com/u/</span>
+          <span className="text-sm text-muted-foreground">{APP_DOMAIN}/u/</span>
           <Input
             id="username"
             value={values.username}

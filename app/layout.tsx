@@ -4,10 +4,11 @@ import { GeistMono } from "geist/font/mono"
 import { Toaster } from "sonner"
 
 import { ThemeProvider } from "@/components/theme-provider"
+import { APP_URL } from "@/lib/config"
 
 import "./globals.css"
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://candid.avikmukherjee.com"
+const baseUrl = APP_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
