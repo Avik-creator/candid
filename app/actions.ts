@@ -57,6 +57,7 @@ export async function sendMessage(
           to: account.email,
           recipientName: profile.display_name || account.name || `@${username}`,
           messageBody: text,
+          username: profile.username,
         }).catch((err) => console.error("[Email] Background send error:", err))
       }
     })

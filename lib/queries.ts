@@ -10,7 +10,7 @@ export async function getUserAccountByUserId(
   userId: string
 ): Promise<{ email: string; name: string | null } | null> {
   const res = await pool.query<{ email: string; name: string | null }>(
-    "SELECT email, name FROM neon_auth.user WHERE id = $1 LIMIT 1",
+    "SELECT email, name FROM neon_auth.user WHERE id = $1::uuid LIMIT 1",
     [userId]
   )
   return res.rows[0] ?? null
