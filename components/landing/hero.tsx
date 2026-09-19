@@ -34,7 +34,7 @@ export function Hero() {
           get your link →
         </Link>
         <Link
-          href="/u/alex"
+          href="/u/avikmukherjee"
           className="text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground"
         >
           see a live example
